@@ -1,5 +1,8 @@
 <?php
 
+use App\User;
+use Propaganistas\LaravelPhone\PhoneNumber;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +16,29 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'sms'], function () {
+    Route::get('subscribe', function () {
+        return view('sms.subscribe');
+    });
+
+    Route::post('subscribe', function () {
+        request()->validate([
+            'subscribe-sms-phone-number' => 'required|phone:US'
+        ], [
+            'phone' => 'Invalid U.S. phone number',
+            'required' => 'You need to provide a phone number to subscribe'
+        ]);
+
+        $number = PhoneNumber::make(request('subscribe-sms-phone-number'))->ofCountry('US');
+
+        $user = User::firstOrNew(['phone_number' => $number->formatE164()])->save();
+
+        return redirect('/sms/subscribed');
+    });
+
+    Route::get('subscribed', function () {
+        return view('sms.subscribed');
+    });
 });
