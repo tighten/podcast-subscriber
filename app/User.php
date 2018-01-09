@@ -2,8 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use Exception;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use NotificationChannels\Twilio\TwilioChannel;
 
 class User extends Authenticatable
 {
@@ -17,4 +19,18 @@ class User extends Authenticatable
     protected $fillable = [
         'phone_number', 'facebook_id'
     ];
+
+    public function notificationChannel()
+    {
+        if ($this->phone_number) {
+            return TwilioChannel::class;
+        }
+
+        if ($this->facebook_id) {
+            throw new Exception('Facebook not programmed yet');
+            // return FacebookChannel::class;
+        }
+
+        throw new Exception('Un-notifiable user');
+    }
 }
