@@ -17,6 +17,6 @@ $factory->define(App\User::class, function (Faker $faker) {
     $channel = array_random(['facebook', 'sms']);
     return [
         'phone_number' => $channel == 'sms' ? $faker->e164PhoneNumber() : null,
-        'facebook' => $channel == 'facebook' ? '123?' : null,
+        'facebook_id' => $channel == 'facebook' ? '123?' : null,
     ];
 });

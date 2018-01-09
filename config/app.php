@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         NotificationChannels\Twilio\TwilioProvider::class,
+        NotificationChannels\Facebook\FacebookServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -5,6 +5,7 @@ namespace App;
 use Exception;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use NotificationChannels\Facebook\FacebookChannel;
 use NotificationChannels\Twilio\TwilioChannel;
 
 class User extends Authenticatable
@@ -27,8 +28,7 @@ class User extends Authenticatable
         }
 
         if ($this->facebook_id) {
-            throw new Exception('Facebook not programmed yet');
-            // return FacebookChannel::class;
+            return FacebookChannel::class;
         }
 
         throw new Exception('Un-notifiable user');
