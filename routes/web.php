@@ -42,3 +42,30 @@ Route::group(['prefix' => 'sms'], function () {
         return view('sms.subscribed');
     });
 });
+
+Route::group(['prefix' => 'facebook'], function () {
+    Route::get('subscribe', function () {
+        return view('facebook.subscribe');
+    });
+
+    Route::post('subscribe', function () {
+        return 'not programmed yet';
+
+        request()->validate([
+            'subscribe-sms-phone-number' => 'required|phone:US'
+        ], [
+            'phone' => 'Invalid U.S. phone number',
+            'required' => 'You need to provide a phone number to subscribe'
+        ]);
+
+        $number = PhoneNumber::make(request('subscribe-sms-phone-number'))->ofCountry('US');
+
+        $user = User::firstOrNew(['phone_number' => $number->formatE164()])->save();
+
+        return redirect('/facebook/subscribed');
+    });
+
+    Route::get('subscribed', function () {
+        return view('facebook.subscribed');
+    });
+});
