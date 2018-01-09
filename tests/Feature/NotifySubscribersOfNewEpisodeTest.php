@@ -32,11 +32,11 @@ class NotifySubscribersOfNewEpisodeTest extends TestCase
     /** @test */
     function subscribers_are_notified_via_appropriate_channels()
     {
-        $smsUser = factory(User::class)->create([
+        $smsUser = User::create([
             'phone_number' => '+13138675309',
         ]);
 
-        $facebookUser = factory(User::class)->create([
+        $facebookUser = User::create([
             'facebook_id' => '12345',
         ]);
 

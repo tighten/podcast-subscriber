@@ -26,4 +26,12 @@ class NewEpisodeReleased extends Notification
         return (new TwilioSmsMessage)
             ->content("There's a new episode of Stauffers on Science available! http://www.stauffersonscience.com/");
     }
+
+    public function toFacebook($notifiable)
+    {
+        $url = url('/invoice/' . $this->invoice->id);
+
+        return FacebookMessage::create("There's a new episode of Stauffers on Science available! http://www.stauffersonscience.com/")
+            ->to($notifiable->facebook_id);
+    }
 }

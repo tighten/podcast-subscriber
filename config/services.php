@@ -41,4 +41,7 @@ return [
         'from' => env('TWILIO_FROM'),
     ],
 
+    'facebook' => [
+        'page-token' => env('FACEBOOK_PAGE_TOKEN')
+    ],
 ];
