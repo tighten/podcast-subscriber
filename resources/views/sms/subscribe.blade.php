@@ -2,7 +2,9 @@
 
 @section('body')
     <h1 class="text-center mb-6">
-        <img src="/logo.svg" alt="Stauffers On Science" class="w-64">
+        <a href="/">
+            <img src="/logo.svg" alt="Stauffers On Science" class="w-64">
+        </a>
     </h1>
     @include('components.errors')
     <h2>Subscribe via SMS:</h2>
