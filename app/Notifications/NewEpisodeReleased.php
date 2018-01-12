@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use NotificationChannels\Facebook\FacebookMessage;
 use NotificationChannels\Twilio\TwilioSmsMessage;
 
 class NewEpisodeReleased extends Notification
@@ -29,8 +30,6 @@ class NewEpisodeReleased extends Notification
 
     public function toFacebook($notifiable)
     {
-        $url = url('/invoice/' . $this->invoice->id);
-
         return FacebookMessage::create("There's a new episode of Stauffers on Science available! http://www.stauffersonscience.com/")
             ->to($notifiable->facebook_id);
     }

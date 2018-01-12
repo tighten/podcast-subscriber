@@ -11,6 +11,7 @@
         "laravel-notification-channels/facebook": "^0.0.1",
         "laravel-notification-channels/twilio": "^2.0",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "propaganistas/laravel-phone": "^3.0"
     },

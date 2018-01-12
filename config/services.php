@@ -42,6 +42,9 @@ return [
     ],
 
     'facebook' => [
-        'page-token' => env('FACEBOOK_PAGE_TOKEN')
+        'page-token' => env('FACEBOOK_PAGE_TOKEN'),
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('APP_URL') . '/facebook/subscribe/callback',
     ],
 ];
