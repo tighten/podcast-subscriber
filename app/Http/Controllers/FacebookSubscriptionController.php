@@ -16,6 +16,8 @@ class FacebookSubscriptionController extends Controller
 
     public function handleMessageWebhook()
     {
+        \Log::info(request()->all());
+        return 'Hey successful for FB verification!';
         // @todo: handle the webhook for a chat message and grab user id
         $user = User::firstOrNew(['facebook_id' => $user->id])->save();
 
