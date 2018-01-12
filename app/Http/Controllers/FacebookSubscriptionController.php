@@ -14,18 +14,37 @@ class FacebookSubscriptionController extends Controller
         return view('facebook.instructions');
     }
 
-    public function handleMessageWebhook()
+    public function getMessageWebhook()
     {
-        \Log::info(request()->all());
-        return 'Hey successful for FB verification!';
-        // @todo: handle the webhook for a chat message and grab user id
-        $user = User::firstOrNew(['facebook_id' => $user->id])->save();
+        if (request('hub_verify_token')) {
+            if (request('hub_verify_token') == config('services.facebook.page-token')) {
+                return request('hub_challenge');
+            }
 
-        return redirect('/facebook/subscribed');
+            exit('Invalid token');
+        }
     }
 
-    public function complete()
+    public function postMessageWebhook()
     {
-        return view('facebook.subscribed');
+        if (! array_key_exists('messaging', request('entry')[0])) {
+            \Log::info('skipping a request...');
+            // not really sure what these are for... ¯\(°_o)/¯
+            return;
+        }
+
+        $messaging = request('entry')[0]['messaging'][0];
+        $userId = array_get($messaging, 'sender.id');
+        $message = array_get($messaging, 'message.text');
+
+        if (str_contains(strtolower($message), 'subscribe')) {
+            \Log::info('FB User subscribed! ' . $userId);
+            $user = User::firstOrNew(['facebook_id' => $userId])->save();
+
+            return 'uh how do i message yayyyy back?';
+        } else {
+            \Log::info('FB User ' . $userId . ' sent non-subscribe message: ' . $message);
+            return 'uh how do i message boooo back';
+        }
     }
 }
