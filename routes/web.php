@@ -11,7 +11,7 @@ Route::group(['prefix' => 'sms'], function () {
 });
 
 Route::group(['prefix' => 'facebook'], function () {
-    Route::get('subscribe', 'FacebookSubscriptionController@redirectToProvider');
-    Route::get('subscribe/callback', 'FacebookSubscriptionController@handleProviderCallback');
+    Route::get('subscribe', 'FacebookSubscriptionController@instructions');
     Route::get('subscribed', 'FacebookSubscriptionController@complete');
+    Route::get('message', 'FacebookSubscriptionController@handleMessageWebhook');
 });

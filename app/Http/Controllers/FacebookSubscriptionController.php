@@ -9,20 +9,14 @@ use Socialite;
 
 class FacebookSubscriptionController extends Controller
 {
-    public function redirectToProvider()
+    public function instructions()
     {
-        return Socialite::driver('facebook')->redirect();
+        return view('facebook.instructions');
     }
 
-    public function handleProviderCallback()
+    public function handleMessageWebhook()
     {
-        try {
-            $user = Socialite::driver('facebook')->stateless()->user();
-        } catch (Exception $e) {
-            return redirect()->back();
-        }
-
-        // @todo: Do we want ->name, ->email, ->token? Guess not?
+        // @todo: handle the webhook for a chat message and grab user id
         $user = User::firstOrNew(['facebook_id' => $user->id])->save();
 
         return redirect('/facebook/subscribed');
