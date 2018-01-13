@@ -3,13 +3,11 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
-use NotificationChannels\Facebook\FacebookMessage;
-use NotificationChannels\Twilio\TwilioSmsMessage;
 
-class NewEpisodeReleased extends Notification
+class Subscribed extends Notification
 {
     use Queueable;
 
@@ -21,12 +19,12 @@ class NewEpisodeReleased extends Notification
     public function toTwilio($notifiable)
     {
         return (new TwilioSmsMessage)
-            ->content("There's a new episode of Stauffers on Science available! http://www.stauffersonscience.com/");
+            ->content("You're now subscribed to Stauffers on Science!");
     }
 
     public function toFacebook($notifiable)
     {
-        return FacebookMessage::create("There's a new episode of Stauffers on Science available! http://www.stauffersonscience.com/")
+        return FacebookMessage::create("You're now subscribed to Stauffers on Science!")
             ->to($notifiable->facebook_id);
     }
 }

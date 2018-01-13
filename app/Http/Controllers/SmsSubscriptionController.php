@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\Subscribed;
 use App\User;
 use Illuminate\Http\Request;
 use Propaganistas\LaravelPhone\PhoneNumber;
@@ -25,6 +26,8 @@ class SmsSubscriptionController extends Controller
         $number = PhoneNumber::make(request('subscribe-sms-phone-number'))->ofCountry('US');
 
         $user = User::firstOrNew(['phone_number' => $number->formatE164()])->save();
+
+        $user->notify(new Subscribed);
 
         return redirect('/sms/subscribed');
     }

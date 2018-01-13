@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\Subscribed;
 use App\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class FacebookSubscriptionController extends Controller
             \Log::info('FB User subscribed! ' . $userId);
             $user = User::firstOrNew(['facebook_id' => $userId])->save();
 
-            return 'uh how do i message yayyyy back?';
+            $user->notify(new Subscribed);
         } else {
             \Log::info('FB User ' . $userId . ' sent non-subscribe message: ' . $message);
             return 'uh how do i message boooo back';
