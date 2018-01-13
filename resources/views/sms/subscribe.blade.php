@@ -13,4 +13,7 @@
         <input type="text" name="subscribe-sms-phone-number" class="my-2 text-lg border-teal shadow appearance-none border rounded py-2 px-3 text-grey-darker" placeholder="313-867-5309" value="{{ old('subscribe-sms-phone-number') }}">
         <input type="submit" class="my-2 text-lg border-teal bg-teal text-white shadow appearance-none border rounded py-2 px-4 text-grey-darker" value="Subscribe">
     </form>
+
+    <p class="mt-4 mb-1">Here's what a notification might look like:</p>
+    <img src="/sms-message-example.png" alt="Example notification" class="max-w-sm">
 @endsection
