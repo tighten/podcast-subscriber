@@ -40,7 +40,7 @@ class FacebookSubscriptionController extends Controller
 
         if (str_contains(strtolower($message), 'subscribe')) {
             \Log::info('FB User subscribed! ' . $userId);
-            $user = User::firstOrNew(['facebook_id' => $userId])->save();
+            $user = User::firstOrCreate(['facebook_id' => $userId]);
 
             $user->notify(new Subscribed);
         } else {
