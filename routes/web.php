@@ -4,6 +4,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('terms', function () {
+    return view('terms-of-service');
+});
+
 Route::group(['prefix' => 'sms'], function () {
     Route::get('subscribe', 'SmsSubscriptionController@create');
     Route::post('subscribe', 'SmsSubscriptionController@store');
