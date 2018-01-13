@@ -15,12 +15,16 @@ class NotifySubscribersOfNewEpisode implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public function __construct()
+    /** SimplePie item */
+    protected $episode;
+
+    public function __construct($episode)
     {
+        $this->episode = $episode;
     }
 
     public function handle()
     {
-        Notification::send(User::all(), new NewEpisodeReleased);
+        Notification::send(User::all(), new NewEpisodeReleased($this->episode));
     }
 }

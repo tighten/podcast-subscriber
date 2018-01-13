@@ -12,7 +12,8 @@
         "laravel-notification-channels/twilio": "^2.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "propaganistas/laravel-phone": "^3.0"
+        "propaganistas/laravel-phone": "^3.0",
+        "willvincent/feeds": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

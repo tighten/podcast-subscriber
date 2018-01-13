@@ -13,6 +13,14 @@ class NewEpisodeReleased extends Notification
 {
     use Queueable;
 
+    /** SimplePie item */
+    protected $episode;
+
+    public function __construct($episode)
+    {
+        $this->episode = $episode;
+    }
+
     public function via($notifiable)
     {
         return $notifiable->notificationChannel();
@@ -21,12 +29,12 @@ class NewEpisodeReleased extends Notification
     public function toTwilio($notifiable)
     {
         return (new TwilioSmsMessage)
-            ->content("There's a new episode of Stauffers on Science available! http://www.stauffersonscience.com/");
+            ->content("There's a new episode of Stauffers on Science available! '" . $this->episode->get_title() . "', available at " . $this->episode->get_permalink());
     }
 
     public function toFacebook($notifiable)
     {
-        return FacebookMessage::create("There's a new episode of Stauffers on Science available! http://www.stauffersonscience.com/")
+        return FacebookMessage::create("There's a new episode of Stauffers on Science available!\n\n'" . $this->episode->get_title() . "', available at " . $this->episode->get_permalink())
             ->to($notifiable->facebook_id);
     }
 }
