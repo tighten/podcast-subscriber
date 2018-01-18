@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use willvincent\Feeds\FeedsFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(FeedsFactory::class, function () {
+            return new FeedsFactory(config('feeds'));
+        });
     }
 }

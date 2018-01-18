@@ -15,6 +15,11 @@ class NotifySubscribersOfNewEpisodeTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function simplePieItemMock()
+    {
+        return (object) [];
+    }
+
     /** @test */
     function subscribers_are_sent_new_episode_notification()
     {
@@ -22,7 +27,8 @@ class NotifySubscribersOfNewEpisodeTest extends TestCase
 
         Notification::fake();
 
-        dispatch(new NotifySubscribersOfNewEpisode);
+        $episode = $this->simplePieItemMock();
+        dispatch(new NotifySubscribersOfNewEpisode($episode));
 
         Notification::assertSentTo(
             User::all(), NewEpisodeReleased::class
@@ -42,7 +48,8 @@ class NotifySubscribersOfNewEpisodeTest extends TestCase
 
         Notification::fake();
 
-        dispatch(new NotifySubscribersOfNewEpisode);
+        $episode = $this->simplePieItemMock();
+        dispatch(new NotifySubscribersOfNewEpisode($episode));
 
         Notification::assertSentTo(
             $smsUser,
