@@ -17,7 +17,7 @@ class Feed
 
     protected function getItems()
     {
-        return $this->feeds->make(self::$feedUrl)->get_items();
+        return $this->feeds->make($this->feedUrl)->get_items();
     }
 
     public function checkAndNotify()
