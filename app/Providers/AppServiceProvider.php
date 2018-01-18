@@ -27,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(FeedsFactory::class, function () {
             return new FeedsFactory(config('feeds'));
         });
+
+        $this->app->alias('bugsnag.multi', \Illuminate\Contracts\Logging\Log::class);
+        $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
     }
 }

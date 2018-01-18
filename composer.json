@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "bugsnag/bugsnag-laravel": "^2.0",
         "fideloper/proxy": "~3.3",
         "laravel-frontend-presets/tailwindcss": "^0.4.1",
         "laravel-notification-channels/facebook": "^0.0.1",
