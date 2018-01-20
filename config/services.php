@@ -42,6 +42,7 @@ return [
     ],
 
     'facebook' => [
-        'page-token' => env('FACEBOOK_PAGE_TOKEN'),
-    ],
+        'page-token' => env('FACEBOOK_TOKEN'),
+    ]
+
 ];

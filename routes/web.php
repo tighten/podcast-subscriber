@@ -19,7 +19,10 @@ Route::group(['prefix' => 'sms'], function () {
 });
 
 Route::group(['prefix' => 'facebook'], function () {
-    Route::get('subscribe', 'FacebookSubscriptionController@instructions');
-    Route::get('message', 'FacebookSubscriptionController@getMessageWebhook');
-    Route::post('message', 'FacebookSubscriptionController@postMessageWebhook');
+    // Route::get('subscribe', 'FacebookSubscriptionController@instructions');
+    // Route::get('message', 'FacebookSubscriptionController@getMessageWebhook');
+    // Route::post('message', 'FacebookSubscriptionController@postMessageWebhook');
 });
+
+Route::match(['get', 'post'], '/botman', 'BotManController@handle');
+Route::get('/botman/tinker', 'BotManController@tinker');
