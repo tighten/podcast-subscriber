@@ -14,6 +14,16 @@ use Tests\TestCase;
 abstract class BotManTestCase extends TestCase
 {
     /**
+     * @var BotMan
+     */
+    protected $botman;
+
+    /**
+     * @var BotManTester
+     */
+    protected $bot;
+
+    /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application
@@ -35,14 +45,4 @@ abstract class BotManTestCase extends TestCase
 
         return $app;
     }
-
-    /**
-     * @var BotMan
-     */
-    protected $botman;
-
-    /**
-     * @var BotManTester
-     */
-    protected $bot;
 }

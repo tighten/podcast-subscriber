@@ -25,7 +25,7 @@ $botman->hears('subscribe', function ($bot) {
 $botman->hears('unsubscribe', function ($bot) {
     $user = $bot->getUser();
 
-    \Log::info('FB User unsubscribed! ' . $user->getId());
+    Log::info('FB User unsubscribed! ' . $user->getId());
     User::where(['facebook_id' => $user->getId()])->delete();
 
     $bot->reply("You're now unsubscribed from Stauffers on Science!");
