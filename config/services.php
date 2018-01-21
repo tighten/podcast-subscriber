@@ -43,6 +43,10 @@ return [
 
     'facebook' => [
         'page-token' => env('FACEBOOK_TOKEN'),
+    ],
+
+    'ifttt' => [
+        'webhook_key' => env('IFTTT_WEBHOOK_KEY'),
     ]
 
 ];
