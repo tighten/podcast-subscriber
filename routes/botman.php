@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\BotManController;
 use App\Notifications\Subscribed;
 use App\User;
@@ -16,7 +17,7 @@ $botman->hears('info', function ($bot) {
 $botman->hears('subscribe', function ($bot) {
     $user = $bot->getUser();
 
-    \Log::info('FB User subscribed! ' . $user->getId());
+    Log::info('FB User subscribed! ' . $user->getId());
     User::firstOrCreate(['facebook_id' => $user->getId()]);
 
     $bot->reply("You're now subscribed to Stauffers on Science!");
@@ -35,5 +36,3 @@ $botman->hears('unsubscribe', function ($bot) {
 $botman->fallback(function ($bot) {
     $bot->reply("Sorry, I don't quite know what you mean. Could you try again?");
 });
-
-// $botman->hears('Start conversation', BotManController::class.'@startConversation');
