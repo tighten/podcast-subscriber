@@ -32,9 +32,11 @@ class NotifySubscribersOfNewEpisode implements ShouldQueue
 
     public function pingMattsIfttt()
     {
-        (new \GuzzleHttp\Client)->request(
-            'POST',
-            'https://maker.ifttt.com/trigger/new_episode/with/key/' . config('services.ifttt.webhook_key')
+        (new \GuzzleHttp\Client)->post(
+            'https://maker.ifttt.com/trigger/new_episode/with/key/' . config('services.ifttt.webhook_key'),
+            [
+                'form_params' => ['value1' => 'blue'],
+            ]
         );
     }
 }
