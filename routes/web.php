@@ -18,5 +18,7 @@ Route::group(['prefix' => 'sms'], function () {
     Route::get('subscribed', 'SmsSubscriptionController@complete');
 });
 
+Route::get('facebook/subscribe', 'FacebookSubscriptionController@instructions');
+
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 Route::get('botman/tinker', 'BotManController@tinker');
