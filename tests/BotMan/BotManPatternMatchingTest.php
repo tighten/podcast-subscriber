@@ -27,7 +27,7 @@ class BotManPatternMatchingTest extends BotManTestCase
     /** @test */
     function matches_all_helps()
     {
-        $responseMessage = 'Right now, your best option is to send the message "subscribe", which will sign you up to be notified when we have new episodes; or "unsubscribe" if you want to stop receiving notifications.';
+        $responseMessage = 'Right now, your best option is to send the message "subscribe", which will sign you up to be notified when we have new episodes; or "unsubscribe" if you want to stop receiving notifications. You can also send "episodes" for a list of all episodes.';
 
         $this->bot->receives('info')->assertReply($responseMessage);
         $this->bot->receives('Info')->assertReply($responseMessage);

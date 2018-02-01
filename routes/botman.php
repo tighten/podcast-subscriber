@@ -12,7 +12,7 @@ $botman->hears('.*(Hi|Hello).*', function ($bot) {
 });
 
 $botman->hears('.*(info|help).*', function ($bot) {
-    $bot->reply('Right now, your best option is to send the message "subscribe", which will sign you up to be notified when we have new episodes; or "unsubscribe" if you want to stop receiving notifications.');
+    $bot->reply('Right now, your best option is to send the message "subscribe", which will sign you up to be notified when we have new episodes; or "unsubscribe" if you want to stop receiving notifications. You can also send "episodes" for a list of all episodes.');
 });
 
 $botman->hears('unsubscribe.*', function ($bot) {
