@@ -15,7 +15,7 @@ class Feed
         $this->feeds = $feeds;
     }
 
-    protected function getItems()
+    public function getItems()
     {
         return $this->feeds->make($this->feedUrl)->get_items();
     }
