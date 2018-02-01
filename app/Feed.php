@@ -24,9 +24,10 @@ class Feed
     {
         foreach ($this->getItems() as $episode) {
             if (Episode::where('permalink', $episode->get_permalink())->count() === 0) {
-                dispatch(new NotifySubscribersOfNewEpisode($episode));
-
+                // Create the episode first so we don't double notify, even if there are failures
                 Episode::create(['permalink' => $episode->get_permalink()]);
+
+                dispatch(new NotifySubscribersOfNewEpisode($episode));
             }
         }
     }
