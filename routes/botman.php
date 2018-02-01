@@ -39,7 +39,7 @@ $botman->hears('episodes', function ($bot) {
     $return = '';
 
     foreach ($episodes as $episode) {
-        $return .= $episode->get_title() . "' : " . $episode->get_permalink() . "\n";
+        $return .= $episode->get_title() . ": " . $episode->get_permalink() . "\n";
     }
 
     $bot->reply($return);
