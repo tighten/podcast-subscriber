@@ -7,7 +7,7 @@ use App\User;
 
 $botman = resolve('botman');
 
-$botman->hears('.*(Hi|Hello).*', function ($bot) {
+$botman->hears('.*(Hi|Hello|Hey).*', function ($bot) {
     $bot->reply('Hello! What can I do for you today? Try "info" for more information.');
 });
 
