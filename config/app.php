@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Stauffers on Science Subscribe'),
+    'name' => env('APP_NAME', 'Podcast Subscriber'),
 
     /*
     |--------------------------------------------------------------------------

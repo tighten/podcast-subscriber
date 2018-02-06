@@ -47,6 +47,6 @@ return [
 
     'ifttt' => [
         'webhook_key' => env('IFTTT_WEBHOOK_KEY'),
-    ]
+    ],
 
 ];

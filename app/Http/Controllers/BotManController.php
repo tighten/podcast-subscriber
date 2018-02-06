@@ -15,6 +15,10 @@ class BotManController extends Controller
 
     public function tinker()
     {
+        if (! app()->environment(['local', 'staging'])) {
+            abort();
+        }
+
         return view('botman.tinker');
     }
 }

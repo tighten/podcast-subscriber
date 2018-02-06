@@ -27,11 +27,15 @@ class NotifySubscribersOfNewEpisode implements ShouldQueue
     {
         Notification::send(User::all(), new NewEpisodeReleased($this->episode));
 
-        $this->pingMattsIfttt();
+        $this->pingIfttt();
     }
 
-    public function pingMattsIfttt()
+    public function pingIfttt()
     {
+        if (! config('services.ifttt.webhook_key')) {
+            return;
+        }
+
         (new \GuzzleHttp\Client)->post(
             'https://maker.ifttt.com/trigger/new_episode/with/key/' . config('services.ifttt.webhook_key'),
             [

@@ -7,11 +7,12 @@ use willvincent\Feeds\FeedsFactory;
 
 class Feed
 {
-    protected $feedUrl = 'https://rss.simplecast.com/podcasts/4062/rss';
+    protected $feedUrl;
     protected $feeds;
 
     public function __construct(FeedsFactory $feeds)
     {
+        $this->feedUrl = config('subscriber.rss_url');
         $this->feeds = $feeds;
     }
 

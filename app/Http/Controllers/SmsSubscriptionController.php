@@ -9,6 +9,13 @@ use Propaganistas\LaravelPhone\PhoneNumber;
 
 class SmsSubscriptionController extends Controller
 {
+    public function __construct()
+    {
+        if (! config('services.twilio.account_sid')) {
+            abort('Twilio not configured.');
+        }
+    }
+
     public function create()
     {
         return view('sms.subscribe');
