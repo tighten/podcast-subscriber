@@ -21,7 +21,7 @@ $botman->hears('unsubscribe.*', function ($bot) {
     Log::info('FB User unsubscribed! ' . $user->getId());
     User::where(['facebook_id' => $user->getId()])->delete();
 
-    $bot->reply("You're now unsubscribed from Stauffers on Science!");
+    $bot->reply("You're now unsubscribed from " . config('app.name') . "!");
 });
 
 $botman->hears('subscribe.*', function ($bot) {
@@ -30,7 +30,7 @@ $botman->hears('subscribe.*', function ($bot) {
     Log::info('FB User subscribed! ' . $user->getId());
     User::firstOrCreate(['facebook_id' => $user->getId()]);
 
-    $bot->reply("You're now subscribed to Stauffers on Science!");
+    $bot->reply("You're now subscribed to " . config('app.name') . "!");
 });
 
 $botman->hears('episodes', function ($bot) {

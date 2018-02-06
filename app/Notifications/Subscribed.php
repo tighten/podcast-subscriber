@@ -21,12 +21,12 @@ class Subscribed extends Notification
     public function toTwilio($notifiable)
     {
         return (new TwilioSmsMessage)
-            ->content("You're now subscribed to Stauffers on Science!");
+            ->content("You're now subscribed to " . config('app.name') . "!");
     }
 
     public function toFacebook($notifiable)
     {
-        return FacebookMessage::create("You're now subscribed to Stauffers on Science!")
+        return FacebookMessage::create("You're now subscribed to " . config('app.name') . "!")
             ->to($notifiable->facebook_id);
     }
 }

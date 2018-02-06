@@ -20,4 +20,5 @@ It's a pain in the butt.
 
 It involves many steps of approval from Facebook. I am writing this readme and can't even get them to approve the pages_messaging_subscriptions permission you need to make this fully work. Good luck.
 
+Also update config/botman/facebook to have your domains
 Also make sure to set up your `FACEBOOK_URL` env var so the links work.

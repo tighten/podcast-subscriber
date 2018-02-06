@@ -29,12 +29,12 @@ class NewEpisodeReleased extends Notification
     public function toTwilio($notifiable)
     {
         return (new TwilioSmsMessage)
-            ->content("New Stauffers on Science available! '" . $this->episode->get_title() . "', : " . $this->episode->get_permalink());
+            ->content("New " . config('app.name') . " available! '" . $this->episode->get_title() . "', : " . $this->episode->get_permalink());
     }
 
     public function toFacebook($notifiable)
     {
-        return FacebookMessage::create("There's a new episode of Stauffers on Science available!\n\n'" . $this->episode->get_title() . "', available: " . $this->episode->get_permalink())
+        return FacebookMessage::create("There's a new episode of " . config('app.name') . " available!\n\n'" . $this->episode->get_title() . "', available: " . $this->episode->get_permalink())
             ->to($notifiable->facebook_id);
     }
 }

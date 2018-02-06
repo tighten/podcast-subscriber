@@ -3,7 +3,7 @@
 @section('body')
     <h1 class="text-center mb-6">
         <a href="/">
-            <img src="/logo.svg" alt="Stauffers On Science" class="w-64">
+            <img src="/logo.svg" alt="{{ config('app.name') }}" class="w-64">
         </a>
     </h1>
     @include('components.errors')
