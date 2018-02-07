@@ -16,6 +16,7 @@
         "laravel-frontend-presets/tailwindcss": "^0.4.1",
         "laravel-notification-channels/facebook": "^0.0.1",
         "laravel-notification-channels/twilio": "^2.0",
+        "laravel-notification-channels/twitter": "^1.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "propaganistas/laravel-phone": "^3.0",
