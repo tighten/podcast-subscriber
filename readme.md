@@ -1,3 +1,5 @@
+![](https://raw.githubusercontent.com/tightenco/podcast-subscriber/master/podcast-subscriber-logo.png)
+
 # Podcast Subscriber
 
 This isn't really consumer ready yet but I've taken first steps.
