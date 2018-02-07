@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/tightenco/podcast-subscriber/master/podcast-subscriber-logo.png)
+![](podcast-subscriber-logo.png?raw=true)
 
 # Podcast Subscriber
 
