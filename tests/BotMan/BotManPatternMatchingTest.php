@@ -38,7 +38,7 @@ class BotManPatternMatchingTest extends BotManTestCase
     /** @test */
     function matches_all_subscribes()
     {
-        $responseMessage = "You're now subscribed to Stauffers on Science!";
+        $responseMessage = "You're now subscribed to " . config('app.name') . "!";
 
         $this->bot->receives('subscribe')->assertReply($responseMessage);
         $this->bot->receives('Subscribe')->assertReply($responseMessage);
@@ -49,7 +49,7 @@ class BotManPatternMatchingTest extends BotManTestCase
     /** @test */
     function matches_all_unsubscribes()
     {
-        $responseMessage = "You're now unsubscribed from Stauffers on Science!";
+        $responseMessage = "You're now unsubscribed from " . config('app.name') . "!";
 
         $this->bot->receives('unsubscribe')->assertReply($responseMessage);
         $this->bot->receives('Unsubscribe')->assertReply($responseMessage);
