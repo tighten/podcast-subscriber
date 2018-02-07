@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Notifications\Subscribed;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Propaganistas\LaravelPhone\PhoneNumber;
 
 class SmsSubscriptionController extends Controller
 {
     public function __construct()
     {
-        if (! config('services.twilio.account_sid')) {
-            abort('Twilio not configured.');
+        if (! config('services.twilio.account_sid') && ! app()->environment('testing')) {
+            Log::error('Twilio is not configured.');
+            abort(500, 'Twilio not configured.');
         }
     }
 

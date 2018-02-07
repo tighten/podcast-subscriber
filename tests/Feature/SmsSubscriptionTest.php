@@ -4,11 +4,19 @@ namespace Tests\Feature;
 
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class SmsSubscriptionTest extends TestCase
 {
     use RefreshDatabase;
+
+    function setUp()
+    {
+        parent::setUp();
+
+        Notification::fake();
+    }
 
     /** @test */
     function successful_subscription_creates_user()
