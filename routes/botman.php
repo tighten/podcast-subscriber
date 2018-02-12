@@ -1,11 +1,18 @@
 <?php
 
-use Facades\App\Feed;
-use App\Http\Controllers\BotManController;
-use App\Notifications\Subscribed;
 use App\User;
+use Facades\App\Feed;
+use BotMan\Drivers\Facebook\Extensions\ElementButton;
+use BotMan\Drivers\Facebook\Extensions\ButtonTemplate;
 
 $botman = resolve('botman');
+
+$botman->hears('get_started', function ($bot) {
+    $buttons = ButtonTemplate::create('Hi! You can subscribe to our podcast, so you will be notified when we have new episodes available.')
+        ->addButton(ElementButton::create('Subscribe')->type('postback')->payload('subscribe'));
+
+    $bot->reply($buttons);
+});
 
 $botman->hears('.*(Hi|Hello|Hey).*', function ($bot) {
     $bot->reply('Hello! What can I do for you today? Try "info" for more information.');
