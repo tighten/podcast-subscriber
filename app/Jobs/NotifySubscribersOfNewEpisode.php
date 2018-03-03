@@ -25,7 +25,17 @@ class NotifySubscribersOfNewEpisode implements ShouldQueue
 
     public function handle()
     {
+        // Notify users
         Notification::send(User::all(), new NewEpisodeReleased($this->episode));
+
+        // Notify Twitter
+        // @todo let's test this :grimace emoji:
+        Notification::send(new class {
+            public function notificationChannel()
+            {
+                return 'twitter';
+            }
+        }, new NewEpisodeReleased($this->episode));
 
         $this->pingIfttt();
     }
